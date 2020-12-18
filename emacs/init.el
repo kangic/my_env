@@ -62,7 +62,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; font
-(set-face-font 'default "Droid Sans Mono for Powerline-10")
+(set-face-font 'default "Meslo LGMDZ Nerd Font-14")
 (set-fontset-font "fontset-default" '(#x1100 . #xffdc)
                    "NanumGothic_Coding-15")
 
