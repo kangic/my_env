@@ -21,13 +21,10 @@ Plug 'vim-airline/vim-airline-themes'
 
 Plug 'airblade/vim-gitgutter'
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-
-Plug 'justmao945/vim-clang'
-
-Plug 'vim-scripts/gtags.vim'
-
 Plug 'vimwiki/vimwiki'
+
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/nvim-compe'
 
 call plug#end()
 

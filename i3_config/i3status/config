@@ -8,7 +8,7 @@
 
 general {
         colors = true
-        interval = 5
+        interval = 1
 }
 
 wireless _first_ {
@@ -54,5 +54,4 @@ order += "memory"
 order += "load"
 order += "tztime local"
 order += "volume master"
-
 

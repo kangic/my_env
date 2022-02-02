@@ -17,7 +17,7 @@ set $mod Mod4
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:MesloLGMDZ 14
+font pango:Dejavu Sans Mono Book 14
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -148,19 +148,28 @@ bar {
         position top
         #output primary
         #tray_output none
-        font pango:MesloLGMDZ NF 10
+        font pango:Dejavu Sans Mono Book 11
         separator_symbol "⁞"
 }
-
-# set wallpaper
-#exec --no-startup-id feh --bg-fill ~/Pictures/sixairplanesx2560x1080.jpg
 
 # increase/decrease volume
 bindsym $mod+plus exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym $mod+minus exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym $mod+0 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 
-# SET GAPS
-for_window [class="^.*"] border pixel 1
+# custom border line/color/gap 
+hide_edge_borders none
+for_window [class="^.*"] border pixel 2
 gaps inner 10
 gaps outer 20
+client.focused #000000 #285577 #ffffff #44eda7 #44eda7
+
+# lock screen
+bindsym Control+Mod1+l exec "i3lock-fancy"
+exec "xautolock -detectsleep -time 3 -locker \"i3lock-fancy\""
+
+# compton
+exec --no-startup-id compton
+
+# set background image
+exec --no-startup-id feh --no-fehbg --bg-scale ~/Pictures/background.jpg

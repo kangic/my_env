@@ -116,39 +116,36 @@ if ! shopt -oq posix; then
   fi
 fi
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# git status
+function gbr {
+    git status --short 2> /dev/null 1> /dev/null
+    if [ "$?" -ne "0" ]; then
+        return 1
+    else
+        branch="`git branch --list | grep '^\*' | cut -c 3-`"
+        branch_str="\033[1;031m$branch\033[0m"
 
-# vi,vim to nvim
-alias vim="nvim"
-alias vi="nvim"
+        stat=`git status --short \
+            | awk '{print $1}' \
+            | sort | uniq -c \
+            | tr '\n' ' ' \
+            | sed -E 's/([0-9]+) /\1/g; s/  */ /g; s/ *$//'`
 
-export PATH=$HOME/bin:/usr/local/bin:/usr/local/go/bin:$PATH
-
-
-export FFMPEG_BIN_PATH=/home/raymondk/bin/ffmpeg-static
-export BIN_PATH=/home/raymondk/bin
-export PATH="$PATH:$FFMPEG_BIN_PATH:$BIN_PATH"
-
-
-# If not running interactively, don't do anything
-[[ $- != *i* ]] && return
-
-alias ls='ls --color=auto'
-PS1='[\u@\h \W]\$ '
-#add virtualenv location to path
-export PATH="$HOME/.local/bin:$PATH"
-
-# for VcXsrv
-export DISPLAY="`grep nameserver /etc/resolv.conf | sed 's/nameserver //'`:0"
-export LIBGL_ALWAYS_INDIRECT=1
-sudo /etc/init.d/dbus start &> /dev/null
-
-function _update_ps1() {
-    PS1=$(powerline-shell $?)
+        stash_size=`git stash list | wc -l | sed 's/ //g'`
+        stash_icon=" \e[0;92m≡\033[0m"
+        printf "[$branch_str]$stat$stash_icon$stash_size"
+        return 0
+    fi
 }
 
-if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
-    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-fi
+# date time username@hostname path (newline)
+export PS1="\[\033[38;5;63m\]\$(date +%Y-%m-%d) \
+\[\033[38;5;11m\]\t \
+\[\033[38;5;10m\]\u@\
+\[\033[38;5;208m\]\h \
+\[\033[38;5;45m\]\w \
+\[$(tput sgr0)\]\$(gbr) \
+\n\
+\[$(tput sgr0)\]> \[$(tput sgr0)\]"
 
 [ -s "/home/raymondk/.scm_breeze/scm_breeze.sh" ] && source "/home/raymondk/.scm_breeze/scm_breeze.sh"
