@@ -34,6 +34,10 @@ sudo apt install i3-gaps -y
 sudo apt install tmux -y
 ln -s ${HOME}/github.com/kangic/dot_files/
 
+# tmux plugin
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+# install tmux plugin 
+
 # fonts
 git clone https://github.com/ryanoasis/nerd-fonts --depth 1 ~/Downloads
 cd ~/Downloads
