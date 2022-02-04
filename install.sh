@@ -53,6 +53,10 @@ sudo apt install rofi -y
 
 # nvim
 
+# tmux plugin
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+# install tmux plugin 
+
 # fonts
 git clone https://github.com/ryanoasis/nerd-fonts --depth 1 ~/Downloads
 cd ~/Downloads
