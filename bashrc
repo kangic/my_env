@@ -149,3 +149,5 @@ export PS1="\[\033[38;5;63m\]\$(date +%Y-%m-%d) \
 \[$(tput sgr0)\]> \[$(tput sgr0)\]"
 
 [ -s "/home/raymondk/.scm_breeze/scm_breeze.sh" ] && source "/home/raymondk/.scm_breeze/scm_breeze.sh"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
