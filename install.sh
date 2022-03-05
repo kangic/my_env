@@ -119,16 +119,18 @@ if [ $platform_env -eq 0 ]; then
 	echo $passwd | sudo -S apt install rofi -y
 
 	# make a symlink i3 config files
-	ln -s $src_path/i3_config/i3 ${HOME}/.conf/.
-	ln -s $src_path/i3_config/i3status ${HOME}/.conf/.
+	ln -s $src_path/i3_config/i3 ${HOME}/.config/.
+	ln -s $src_path/i3_config/i3status ${HOME}/.config/.
 fi
 
 ##########################################################
 ## Terminal Env
 # nvim
 echo ">>> install nvim..."
+echo $passwd | sudo -S add-apt-repository ppa:neovim-ppa/unstable -y
+echo $passwd | sudo -S apt update
 echo $passwd | sudo -S apt install neovim -y
-ln -s $src_path/nvim ${HOME}/.conf/.
+ln -s $src_path/nvim ${HOME}/.config/.
 
 echo ">>> install nvim plugins..."
 nvim --headless +PlugInstall +qall
