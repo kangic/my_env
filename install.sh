@@ -157,7 +157,7 @@ fi
 
 # scm_breeze
 echo ">>> install scm_breeze..."
-git clone git://github.com/scmbreeze/scm_breeze.git $HOME/.scm_breeze
+git clone https://github.com/scmbreeze/scm_breeze.git $HOME/.scm_breeze
 $HOME/.scm_breeze/install.sh
 
 ##########################################################
